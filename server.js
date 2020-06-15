@@ -5,6 +5,7 @@ const passport = require("passport");
 const path = require("path");
 
 const users = require("./routes/api/users");
+const plaid = require("./routes/api/plaid");
 
 const app = express();
 // Bodyparser middleware
@@ -28,6 +29,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
+app.use("/api/plaid", plaid);
 
 //serve static assests if in production
 if (process.env.NODE_ENV === "production") {
